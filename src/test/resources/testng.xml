@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org">
+<suite name="Main Suite">
+    <test name="All Tests">
+        <classes>
+            <class name="com.herokuapp.restfulbooker.CreateBookingTest"/>
+            <class name="com.herokuapp.restfulbooker.GetBookingTest"/>
+        </classes>
+    </test>
+</suite>
