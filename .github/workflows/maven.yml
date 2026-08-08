@@ -1,12 +1,4 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Run Smoke Tests
+name: CI
 
 on:
   push:
@@ -15,8 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,5 +20,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build and Run Smoke Tests
-        run: mvn clean test -Dgroups=smoke
+      - name: Build
+        run: mvn clean package -DskipTests
+
+      - name: Run Smoke Tests
+        run: mvn test -Dgroups=smoke
+
+      - name: Run Regression Tests
+        run: mvn test -Dgroups=regression
