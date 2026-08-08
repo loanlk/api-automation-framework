@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Run Smoke Tests
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
           cache: maven
 
       - name: Build and Run Smoke Tests
-        run: mvn -B package --file pom.xml
+        run: mvn clean test -Dgroups=smoke
