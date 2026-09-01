@@ -49,8 +49,14 @@ public class CurlLoggingFilter implements Filter {
         }
 
         String curlStr = curl.toString();
-        System.out.println("[CURL] " + curlStr);   // ← in ngay mọi request
         LAST_CURL.set(curlStr);
+        // Không in ra console ở đây nữa — làm vậy sẽ ồn ào ngay cả khi request pass, chôn lẫn request
+        // thật sự gây fail giữa hàng trăm dòng log. Việc in console giờ chỉ xảy ra khi test fail, xem
+        // CurlOnFailureListener. Muốn xem curl của MỌI request khi debug local (không quan tâm pass/fail):
+        // chạy với -Dcurl.verbose=true
+        if (Boolean.getBoolean("curl.verbose")) {
+            System.out.println("[CURL] " + curlStr);
+        }
         return ctx.next(requestSpec, responseSpec);
     }
 

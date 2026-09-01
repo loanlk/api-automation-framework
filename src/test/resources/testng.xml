@@ -3,6 +3,7 @@
     <listeners>
         <listener class-name="com.herokuapp.restfulbooker.listeners.CurlOnFailureListener"/>
         <listener class-name="com.herokuapp.restfulbooker.listeners.AnnotationTransformer"/>
+        <listener class-name="com.herokuapp.restfulbooker.listeners.AllureEnvironmentListener"/>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
     <test name="All Tests">
