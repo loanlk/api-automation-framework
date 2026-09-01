@@ -1,9 +1,19 @@
 <!DOCTYPE suite SYSTEM "https://testng.org">
-<suite name="Main Suite">
+<suite name="Main Suite" parallel="classes" thread-count="4">
+    <listeners>
+        <listener class-name="com.herokuapp.restfulbooker.listeners.CurlOnFailureListener"/>
+        <listener class-name="com.herokuapp.restfulbooker.listeners.AnnotationTransformer"/>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
     <test name="All Tests">
         <classes>
-            <class name="com.herokuapp.restfulbooker.CreateBookingTest"/>
+            <class name="com.herokuapp.restfulbooker.AuthTest"/>
+            <class name="com.herokuapp.restfulbooker.CreateBookingRequestTest"/>
             <class name="com.herokuapp.restfulbooker.GetBookingTest"/>
+            <class name="com.herokuapp.restfulbooker.GetBookingIdsTest"/>
+            <class name="com.herokuapp.restfulbooker.UpdateBookingRequestTest"/>
+            <class name="com.herokuapp.restfulbooker.DeleteBookingRequestTest"/>
+            <class name="com.herokuapp.restfulbooker.HealthCheckTest"/>
         </classes>
     </test>
 </suite>

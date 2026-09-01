@@ -1,0 +1,19 @@
+{
+  "filterByFirstnameLastname": {
+    "firstname": "Jim",
+    "lastname": "Brown"
+  },
+  "filterCheckinCheckout": {
+    "checkin": "2018-01-01",
+    "checkout": "2019-01-01"
+  },
+  "filterNameNoBookingFound": {
+    "firstname": "Zzznotarealname"
+  },
+  "filterMalformedDate": {
+    "checkin": "not-a-date"
+  },
+  "filterXSSPayloadInfirstname": {
+    "firstname": "<script>alert('XSS')</script>"
+  }
+}

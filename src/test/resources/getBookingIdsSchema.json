@@ -1,0 +1,28 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1788025143.json",
+  "title": "Root",
+  "type": "array",
+  "default": [],
+  "items":{
+    "$id": "#root/items",
+    "title": "Items",
+    "type": "object",
+    "required": [
+      "bookingid"
+    ],
+    "properties": {
+      "bookingid": {
+        "$id": "#root/items/bookingid",
+        "title": "Bookingid",
+        "type": "integer",
+        "examples": [
+          1
+        ],
+        "default": 0
+      }
+    }
+  }
+
+}

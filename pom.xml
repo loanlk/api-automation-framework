@@ -13,6 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testGroup>smoke</testGroup>
+        <env>qa</env>
     </properties>
     <build>
         <plugins>
@@ -40,7 +41,19 @@
                     </suiteXmlFiles>
                     <!-- Nhận nhóm test động từ dòng lệnh -->
                     <groups>${testGroup}</groups>
+                    <!-- Forward -Denv=... vào JVM chạy test (mvn tự động set system property cho tiến trình
+                         Maven, nhưng KHÔNG tự forward sang forked test JVM nếu không khai báo ở đây) -->
+                    <systemPropertyVariables>
+                        <env>${env}</env>
+                    </systemPropertyVariables>
+                    <!-- Không dừng build khi có test fail, để các goal sau (vd allure:report/serve) vẫn chạy -->
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
             </plugin>
         </plugins>
     </build>
@@ -70,6 +83,44 @@
             <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>3.2.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.12.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>6.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- JSON Schema Validator for REST Assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>6.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.19.2</version>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.35.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.35.4</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

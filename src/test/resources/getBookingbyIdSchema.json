@@ -1,0 +1,86 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1788062985.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "firstname",
+    "lastname",
+    "totalprice",
+    "depositpaid",
+    "bookingdates"
+  ],
+  "properties": {
+    "firstname": {
+      "$id": "#root/firstname",
+      "title": "Firstname",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Mark"
+      ],
+      "pattern": "^.*$"
+    },
+    "lastname": {
+      "$id": "#root/lastname",
+      "title": "Lastname",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Ericsson"
+      ],
+      "pattern": "^.*$"
+    },
+    "totalprice": {
+      "$id": "#root/totalprice",
+      "title": "Totalprice",
+      "type": "integer",
+      "examples": [
+        827
+      ],
+      "default": 0
+    },
+    "depositpaid": {
+      "$id": "#root/depositpaid",
+      "title": "Depositpaid",
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "default": true
+    },
+    "bookingdates": {
+      "$id": "#root/bookingdates",
+      "title": "Bookingdates",
+      "type": "object",
+      "required": [
+        "checkin",
+        "checkout"
+      ],
+      "properties": {
+        "checkin": {
+          "$id": "#root/bookingdates/checkin",
+          "title": "Checkin",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "2022-12-03"
+          ],
+          "pattern": "^.*$"
+        },
+        "checkout": {
+          "$id": "#root/bookingdates/checkout",
+          "title": "Checkout",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "2024-06-01"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+
+  }
+}

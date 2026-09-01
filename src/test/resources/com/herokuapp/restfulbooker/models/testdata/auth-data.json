@@ -1,0 +1,22 @@
+{
+  "validUser": {
+    "username": "admin",
+    "password": "password123"
+  },
+  "wrongPassword": {
+    "username": "admin",
+    "password": "wrongpass"
+  },
+  "nonExistentUser": {
+    "username": "notarealuser",
+    "password": "password123"
+  },
+  "missingPasswordField": {
+    "username": "admin",
+    "password": ""
+  },
+  "sqlInjectionUsername": {
+      "username": "admin' OR '1'='1",
+      "password": "x"
+  }
+}

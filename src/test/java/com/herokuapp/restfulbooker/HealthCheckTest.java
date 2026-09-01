@@ -1,13 +1,15 @@
 package com.herokuapp.restfulbooker;
 
+import com.herokuapp.restfulbooker.constants.HttpStatusCodes;
+import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import static io.restassured.RestAssured.*;
 
-public class HealthCheckTest {
+public class HealthCheckTest extends BaseTest {
+
     @Test(groups = {"smoke","regression"})
     public void healthCheckTest(){
-        given().
-                get("https://restful-booker.herokuapp.com/ping").
-                then().statusCode(201);
+        Response response = healthApi.getPing();
+        Assert.assertEquals(response.getStatusCode(), HttpStatusCodes.CREATED);
     }
 }
